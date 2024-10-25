@@ -1,0 +1,242 @@
+
+
+body{
+    min-width: 550px;
+    max-width: 1092px;
+}
+
+/* header*/
+header{
+    background-color: white;
+    height:80px;
+    border: 3px solid black;
+    border-bottom: 0px;
+}
+header h1{
+    text-align: center;
+}
+
+/* device list*/
+/* 전체 */
+section#dev_list{
+    width: 250px;
+    height: 680px;
+    float: left;
+    background-color: white;
+    border: 3px solid black;
+    margin-right: 10px;
+}
+section#dev_list h2{
+    text-align: center;
+}
+/* 하나 */
+div.dev{
+    box-sizing: border-box;
+    border: 1px solid black;
+    width:95%;
+    height:40px;
+    background-color: rgb(233, 233, 233);
+    margin: 7px;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+div.dev span.dev_name{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    font-size: 18pt;
+    margin-top: 3px;
+    margin-right: 3px;
+}
+div.dev span.dev_addr{
+    color: gray;
+    font-size: 10pt;
+}
+/* online 글자 속성*/
+div.dev span.dev_isonline{
+    display: block;
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+    background-color: rgb(255, 168, 168);
+    float: right;
+    padding-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+    
+}
+div.dev span.dev_isonline.on{
+    background-color: rgb(179, 250, 179);
+}
+div.dev span.dev_isonline::before{
+    content: "off";
+}
+div.dev span.dev_isonline.on::before{
+    content: "ON";
+}
+
+
+
+/*alert*/
+
+section#alarm_list{
+    
+    width: 220px;
+    height: auto;
+    float: right;
+    position: fixed;
+    right: 12px;
+    bottom: 5px;
+
+    display: flex;
+    flex-direction: column-reverse;
+}
+section#alarm_list button{
+    margin-top: 10px;
+}
+div.alarm{
+    box-sizing: border-box;
+    height: 55px;
+    overflow: hidden;
+    margin-top: 10px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    
+    padding: 5px;
+}
+div.alarm:hover{
+    height: auto;
+    min-height: 55px;
+}
+div.alarm.exception{
+    background-color: rgb(255, 255, 161);
+}
+div.alarm.complete{
+    background-color: rgb(170, 255, 170);
+}
+div.alarm.exception span::before{
+    /*content: "[!]";*/
+    content: url("images/triangle-mini.png");
+}
+div.alarm.complete span::before{
+    /*content: "[!]";*/
+    content: url("images/check-mini.png");
+}
+
+
+/*삭제버튼*/
+div.alarm button.btn_removealarm{
+    float: right;
+    width: 30px;
+    height: 24px;
+
+    font-size: 12pt;
+}
+
+/* main */
+
+div#control_board{
+    border: 3px solid black;
+    /*border-bottom: 1px solid black;*/
+    background-color: rgb(255, 235, 198);
+
+    padding: 10px;
+    
+}
+div#control_board > div{
+    margin-bottom: 10px;
+}
+
+div#control_board span{
+    display: inline-block;
+    margin-bottom: 5px;
+    font-size: 18pt;
+}
+div#control_board button{
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 8px;
+    font-size : 14pt;
+    float: right;
+}
+div#control_board button:hover{
+    transition: 0.1s;
+    background-color: skyblue;
+}
+div#control_board button:disabled{
+    background-color: lightgray;
+}
+div#control_board button:disabled:hover{
+    background-color: lightgray;
+}
+select#sel_rehab{
+    background-color: white;
+    height: 30px;
+    font-size: 14pt;
+}
+input#inp_predicttime{
+    height: 25px;
+    width: 40px;
+    font-size: 14pt;
+}
+
+
+div#show_example{
+    background-color: aliceblue;
+    visibility: hidden;
+    border: 3px solid black;
+    /*border-top: 2px solid black;*/
+    /*border-bottom: 1px solid black; */
+    margin-top: -3px;
+}
+p#pos_title{
+    font-size: 18pt;
+}
+
+div#result{
+    visibility: hidden;
+    background-color: rgb(219, 255, 164);
+    border: 3px solid black;
+    /*border-top: 2px solid black;*/
+    height: 200px;
+    margin-top: -3px;
+}
+div#result > p:first-child{
+    font-size: 16pt;
+}
+div#result_time_graph{
+    display: inline-block;
+    position: relative;
+    max-width:600px;
+    width: 45%;
+    height: 20px;
+    background-color: burlywood;
+    border: 2px solid black;
+}
+div#result_time_graph_bar{
+    width: 50%;
+    height:100%;
+    background-color: red;
+}
+p#result_time{
+    display: inline;
+    margin: 0;
+    position:absolute;
+    top: 0px;
+    right: 3px;
+}
+
+footer{
+    display: block;
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+    clear:left;
+}
+footer span{
+    color:gray;
+    font-size: 10pt;
+}

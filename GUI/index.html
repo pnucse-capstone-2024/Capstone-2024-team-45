@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45-패트와 매트랩</title>
+    <link rel="stylesheet" href="style.css">
+    </link>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            재활운동 자세 추론 시스템
+        </h1>
+    </header>
+    <section id="dev_list">
+        <h2> Device list</h2>
+        <hr>
+        <!--
+        <div class="dev">
+            <span class="dev_isonline on"></span>
+            <span class="dev_name">A</span>
+            <span class="dev_addr">7C:AB:CD:EF:00:11</span>
+        </div>
+        <div class="dev">
+            <span class="dev_isonline"></span>
+            <span class="dev_name">B</span>
+            <span class="dev_addr">7C:AB:CD:EF:00:11</span>
+        </div> -->
+    </section>
+
+    <section id="main">
+        <div id="control_board">
+            <div>
+                <span id="str_scan"> 장치 스캔 </span>
+                <button id="btn_scan" onclick="btn_scan()"> scan </button> <br>
+            </div>
+            <hr>
+            <div>
+                <span id="str_predict"> 자세 추론 </span> <br>
+                <select id="sel_rehab" onclick="example_refresh()">
+                    <option value="shoulder">Assisted shoulder flexion</option>
+                    <option value="hamstring">Hamstring stretch</option>
+                    <option value="neck">Neck side extension</option>
+                    <option value="bridge">Bridge stretch</option>
+                </select>
+                <input id="inp_predicttime" placeholder="시간" value="100" />
+                <button id="btn_predict" onclick="btn_predict()"> 시작 </button> <br>
+            </div>
+        </div>
+        <div id="show_example">
+            <p id="pos_title">Assisted shoulder flexion</p>
+            <hr>
+            <p id="pos_description">
+                0. 필요한 센서: A B C D E <br>
+                1. 양 손을 깍지끼고 양팔을 아래로 뻗습니다.<br>
+                2. 5초 동안 양 팔을 편 채 위로 듭니다.<br>
+                3. 다음 5초 동안 아래로 내립니다.<br>
+                4. 총 10회 반복합니다.<br>
+            </p>
+            <p id="status_str"> 필요한 센서가 모두 연결되어 있지 않습니다. 센서 연결후 다시 시도해주세요,센서 연결 중...</p>
+        </div>
+        <div id="result">
+            <p>
+                자세 추론 중...
+            </p>
+            <div id="result_time_graph">
+                <div id="result_time_graph_bar"></div>
+                <p id="result_time"></p>
+            </div>
+
+            <p id="result_text">
+                
+            </p>
+            <p id="result_final">
+                
+            </p>
+        </div>
+    </section>
+
+
+    <section id="alarm_list">
+        <button id="btn_removealarmall" onclick="remove_alarm_all(this)">전부 삭제</button>
+        <!--
+        <div class="alarm exception">
+            <button class="btn_removealarm" onclick="remove_alarm(this)">X</button>
+            <span>exception
+            </span>
+        </div>
+        <div class="alarm complete">
+            <button class="btn_removealarm" onclick="remove_alarm(this)">X</button>
+            <span>3.14159265 358979323 84626 4338 327950 28841971 9399375105 820974944592307
+            </span>
+        </div>
+        <div class="alarm">
+            <button class="btn_removealarm" onclick="remove_alarm(this)">X</button>
+            <span>잠자고싶다
+            </span>
+        </div> -->
+    </section>
+
+
+    <footer>
+        <span>
+            2024 전기 졸업과제 <br>
+            IMU 기반 경량 재활운동 자세 추론 및 보조 시스템 개발 <br>
+            45-패트와 매트랩
+        </span>
+    </footer>
+</body>
+
+</html>
