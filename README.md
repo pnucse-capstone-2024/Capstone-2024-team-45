@@ -1,206 +1,101 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/NJK_cPkH)
-# Template for Capstone
-이 레파지토리는 학생들이 캡스톤 프로젝트 결과물을 위한 레파지토리 생성시에 참고할 내용들을 담고 있습니다.
-1. 레파지토리 생성
-2. 레파지토리 구성
-3. 레파지토리 제출 
-4. README.md 가이드라인
-5. README.md 작성팁
+# IMU 기반 경량 재활운동 자세 추론 및 보조 시스템 개발
 
----
-
-## 1. 레파지토리 생성
-- [https://classroom.github.com/a/NJK_cPkH](https://classroom.github.com/a/NJK_cPkH)
-- 위 Github Classroom 링크에 접속해 본인 조의 github 레파지토리를 생성하세요.
-<img src="https://github.com/user-attachments/assets/b5a7f34a-e146-4253-b57d-672737a75a50" alt="깃헙 클래스룸 레포 생성" width="600" />
-
-- 레포지토리 생성 시 팀명은 `TEAM-{조 번호}` 형식으로 생성하세요.
-- 예를 들어, 2024년도 3조의 팀명은 `TEAM-03` 입니다.
-- 이 경우 `Capstone2024-TEAM-03`이란 이름으로 레파지토리가 생성됩니다.
-
----
-
-## 2. 레파지토리 구성
-- 레파지토리 내에 README.md 파일 생성하고 아래의 가이드라인과 작성팁을 참고하여 README.md 파일을 작성하세요. (이 레파지토리의 SAMPLE_README.md 참조)
-- 레파지토리 내에 docs 디렉토리를 생성하고 docs 디렉토리 내에는 과제 수행 하면서 작성한 각종 보고서, 발표자료를 올려둡니다. (이 레파지토리의 docs 디렉토리 참조)
-- 그 밖에 레파지토리의 폴더 구성은 과제 결과물에 따라 자유롭게 구성하되 가급적 코드의 목적이나 기능에 따라 디렉토리를 나누어 구성하세요.
-
----
-
-## 3. 레파지토리 제출 
-
-- **`[주의]` 레파지토리 제출**은 해당 레파지토리의 ownership을 **학과 계정**으로 넘기는 것이므로 되돌릴 수 없습니다.
-- **레파지토리 제출** 전, 더 이상 수정 사항이 없는지 다시 한번 확인하세요.
-- github 레파지토리에서 Settings > General > Danger zone > Transfer 클릭
-  <img src="https://github.com/user-attachments/assets/cb2361d4-e07e-4b5d-9116-aa80dddd8a8b" alt="소유주 변경 경로" width="500" />
-  
-- [ Specify an organization or username ]에 'PNUCSE'를 입력하고 확인 메세지를 입력하세요.
-  <img src="https://github.com/user-attachments/assets/7c63955d-dcfe-4ac3-bdb6-7d2620575f3a" alt="소유주 변경" width="400" />
-
----
-
-## 4. README.md 가이드 라인
-- README 파일 작성시에 아래의 5가지 항목의 내용은 필수적으로 포함해야 합니다.
-- 아래의 5가지 항목이외에 프로젝트의 이해를 돕기 위한 내용을 추가해도 됩니다.
-- SAMPLE_README.md 이 단순한 형태의 예제이니 참고하세요.
-
-```markdown
 ### 1. 프로젝트 소개
 #### 1.1. 배경 및 필요성
-> 프로젝트를 실행하게 된 배경 및 필요성을 작성하세요.
+
+재활 운동은 정확한 자세가 중요하다. 정확한 자세 유지를 위해, HPE를 통해 환자의 재활운동 자세를 보조하는 방법을 생각해 볼 수 있다. 하지만 컴퓨터 비전을 통해 HPE를 수행하게 되면, 센서 장비가 고가라는 점과 사진을 촬영하여 처리하는 과정에서 개인 프라이버시가 침해될 수 있는 문제점이 존재한다.
+
+따라서 이 과제에서는 컴퓨터 비전과 비교하여 상대적으로 저가이고, 폐쇄적이어서 프라이버시를 걱정할 필요가 없는 임베디드 환경에서 재활 운동 자세를 추론하는 것을 목표로 연구를 수행하였다.
+
 
 #### 1.2. 목표 및 주요 내용
-> 프로젝트의 목표 및 주요 내용을 작성하세요.
+
+- BLE를 통해 IMU 데이터를 게이트웨이로 전송하는 시스템 개발
+- 전송받은 데이터들의 동기화를 맞추는 시스템을 개발
+- 자세 추론을 위한 머신러닝 모델의 학습
+- 재활 동작 별로 측정 모듈 개수를 최적화
 
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
-> 시스템 구성도(infra, front, back등의 node 간의 관계)의 사진을 삽입하세요.
 
-#### 2.1. 사용 기술
-> 스택 별(backend, frontend, designer등) 사용한 기술 및 버전을 작성하세요.
-> 
-> ex) React.Js - React14, Node.js - v20.0.2
+**센서 착용 위치**
+<br>
+<img src="https://github.com/user-attachments/assets/c4178bac-d06d-4661-8756-090856fb8233" width="300px" title="Title" alt="Alt text"></img>
+
+
+**전체 시스템 흐름도**
+<br>
+<img src="https://github.com/user-attachments/assets/ff32aa22-6280-4d65-881b-c011e9085499" width="600px" title="Title" alt="Alt text"></img>
+
+
+#### 2.2. 사용 기술
+
+- 게이트웨이
+  - 사용언어 : Python
+  - 라이브러리
+    - bleak : BLE 연결 담당
+    - numpy : 데이터 처리
+    - sklearn, tensorflow : 자세 추론 담당
+    - fastapi, uvicorn : 웹 API 제공
+
+- 펌웨어
+  - 사용언어 : C
+  - 개발 프레임워크 : ESP-IDF
+
+#### 2.3 사용 장비
+
+- ESP32-S3 개발보드
+- Jetson Orin Nano
+
 
 ### 3. 설치 및 사용 방법
-> 제품을 설치하기 위헤 필요한 소프트웨어 및 설치 방법을 작성하세요.
->
-> 제품을 설치하고 난 후, 실행 할 수 있는 방법을 작성하세요.
+
+#### 3.1 펌웨어
+ESP32-S3 기반의 개발보드를 여러 개 준비해 진행한다. 다른 ESP32 제품군을 사용해도 되지만 BLE는 지원해야 한다.
+
+개발 보드에는 6축 IMU 센서가 있어야 한다. 센서는 I2C 통신으로 보드와 연결되어 있다. 개발에 사용한 IMU 센서는 ICM-42670-P로, 다른 제품을 사용하려고 하면 해당 제품의 데이터시트를 확인하여 main/imu.h에 정의된 레지스터 주소를 수정할 필요가 있다.
+
+또한 개발 보드에 연결된 LED를 통해 보드의 상태를 확인할 수 있는데, 개발 환경이 바뀌면 main/main.c에 정의된 GPIO 핀 번호를 수정할 필요가 있다. (LED 없어도 정상동작 가능)
+
+ESP-IDF를 이용하여 빌드를 진행한다. 프로젝트는 board_firmware 폴더에 있다. 이때 개발 보드마다 개별의 이름을 갖도록, main.c에서 DEVICE_NAME과 DEV_ID의 알파벳을 바꿔줄 필요가 있다. 통신 포트(COMx)와 디바이스 타깃(esp32s3)을 설정한 뒤 프로젝트를 빌드하고 보드에 플래시하면 펌웨어 준비는 끝난다.
+
+만약 esp 관련 경로 문제가 발생한다면 dependencies.lock에서 ESP-IDF가 설치된 경로를 수정할 필요가 있다.
+
+
+#### 3.2 게이트웨이
+게이트웨이 장비에서 센서들을 연결하고 데이터를 수집한다. 기본적으로 게이트웨이 장비(PC, Jetson 등등)는 Bluetooth 4.0 이상을 지원해야 한다.
+
+게이트웨이는 두 가지 방법으로 센서와 연결할 수 있다. 첫째로, gateway 디렉토리의 blemaster.py를 실행하는 방법이다. CLI의 형태이고, 장치 연결 확인, 데이터 수집, 자세 추론을 전부 수행할 수 있다. 사용하기 전 gateway/devices.txt에 사용할 장비의 MAC주소와 이름을 작성할 필요가 있다.
+
+둘째로, 웹을 이용하는 방법이 있다. 아래와 같이 파이썬을 이용한 API 서버를 실행시킨 후 GUI/index.html 문서를 열면 된다.
+```
+cd GUI     
+uvicorn main:app
+```
+여기서는 장치 연결 확인과 자세 추론을 수행할 수 있다. 마찬가지로 사용하기 전 GUI/devices.txt에 사용할 장비의 MAC주소와 이름을 작성할 필요가 있다.
+
+
 
 ### 4. 소개 및 시연 영상
-> 프로젝트에 대한 소개와 시연 영상을 넣으세요.
+
+[2024년 전기 졸업과제 45 패트와 매트랩](https://youtu.be/8_2EiJ4fJU8)
 
 ### 5. 팀 소개
-> 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
-```
 
-## 5. README.md 작성팁 
-* 마크다운 언어를 이용해 README.md 파일을 작성할 때 참고할 수 있는 마크다운 언어 문법을 공유합니다.  
-* 다양한 예제와 보다 자세한 문법은 [이 문서](https://www.markdownguide.org/basic-syntax/)를 참고하세요.
+- 하규승
+  - hgs6417@gmail.com
+  - 측정 모듈-게이트웨이간 BLE 통신 구현
+  - 게이트웨이 - 유저간 feedback 구현
+  - 데이터셋 제작
+  - 모델 학습 및 평가
+  - 서비스 구현
+  - 최적화 및 디버깅
 
-### 5.1. 헤더 Header
-```
-# This is a Header 1
-## This is a Header 2
-### This is a Header 3
-#### This is a Header 4
-##### This is a Header 5
-###### This is a Header 6
-####### This is a Header 7 은 지원되지 않습니다.
-```
-<br />
-
-### 5.2. 인용문 BlockQuote
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-```
-> This is a first blockqute.
->	> This is a second blockqute.
->	>	> This is a third blockqute.
-<br />
-
-### 5.3. 목록 List
-* **Ordered List**
-```
-1. first
-2. second
-3. third  
-```
-1. first
-2. second
-3. third
-<br />
-
-* **Unordered List**
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-```
-* 하나
-  * 둘
-
-+ 하나
-  + 둘
-
-- 하나
-  - 둘
-<br />
-
-### 5.4. 코드 CodeBlock
-* 코드 블럭 이용 '``'
-```
-여러줄 주석 "```" 이용
-"```
-#include <stdio.h>
-int main(void){
-  printf("Hello world!");
-  return 0;
-}
-```"
-
-단어 주석 "`" 이용
-"`Hello world`"
-
-* 큰 따움표(") 없이 사용하세요.
-``` 
-<br />
-
-### 5.5. 링크 Link
-```
-[Title](link)
-[부산대학교 정보컴퓨터공학부](https://cse.pusan.ac.kr/cse/index..do)
-
-<link>
-<https://cse.pusan.ac.kr/cse/index..do>
-``` 
-[부산대학교 정보컴퓨터공학부](https://cse.pusan.ac.kr/cse/index..do)
-
-<https://cse.pusan.ac.kr/cse/index..do>
-<br />
-
-### 5.6. 강조 Highlighting
-```
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-~~cancelline~~
-```
-*single asterisks* <br />
-_single underscores_ <br />
-**double asterisks** <br />
-__double underscores__ <br />
-~~cancelline~~  <br />
-<br />
-
-### 5.7. 이미지 Image
-```
-<img src="image URL" width="600px" title="Title" alt="Alt text"></img>
-![Alt text](image URL "Optional title")
-```
-- 웹에서 작성한다면 README.md 내용 안으로 이미지를 드래그 앤 드롭하면 이미지가 생성됩니다.
-- 웹이 아닌 로컬에서 작성한다면, github issue에 이미지를 드래그 앤 드롭하여 image url 을 얻을 수 있습니다. (URL만 복사하고 issue는 제출 안 함.)
-  <img src="https://github.com/user-attachments/assets/0fe3bff1-7a2b-4df3-b230-cac4ef5f6d0b" alt="이슈에 image 올림" width="600" />
-  <img src="https://github.com/user-attachments/assets/251c6d42-b36b-4ad4-9cfa-fa2cc67a9a50" alt="image url 복사" width="600" />
-
-
-### 5.8. 유튜브 영상 추가
-```markdown
-[![영상 이름](유튜브 영상 썸네일 URL)](유튜브 영상 URL)
-[![부산대학교 정보컴퓨터공학부 소개](http://img.youtube.com/vi/zh_gQ_lmLqE/0.jpg)](https://www.youtube.com/watch?v=zh_gQ_lmLqE)    
-```
-[![부산대학교 정보컴퓨터공학부 소개](http://img.youtube.com/vi/zh_gQ_lmLqE/0.jpg)](https://www.youtube.com/watch?v=zh_gQ_lmLqE)    
-
-- 이때 유튜브 영상 썸네일 URL은 유투브 영상 URL로부터 다음과 같이 얻을 수 있습니다.
-
-- `Youtube URL`: https://www.youtube.com/watch?v={동영상 ID}
-- `Youtube Thumbnail URL`: http://img.youtube.com/vi/{동영상 ID}/0.jpg 
-- 예를 들어, https://www.youtube.com/watch?v=zh_gQ_lmLqE 라고 하면 썸네일의 주소는 http://img.youtube.com/vi/zh_gQ_lmLqE/0.jpg 이다.
-
+- 김지훈
+  - hoon5916@naver.com
+  - 센서값 수신 및 데이터 전처리
+  - 수신값 동기화 구현
+  - 데이터셋 제작
+  - 모델 학습 및 평가
+  - 서비스 구현
+  - 최적화 및 디버깅
